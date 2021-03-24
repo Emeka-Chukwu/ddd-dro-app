@@ -73,7 +73,6 @@ class InpuTextForm extends StatelessWidget {
         if (state is HideIconState) {
           controller.text = "";
         }
-        print(state);
         // if(context.read<MenuHomeBloc>().state == DataLoaded){controller.text =
         // ignore: sized_box_for_whitespace
         return Container(
@@ -81,15 +80,15 @@ class InpuTextForm extends StatelessWidget {
           height: Responsive.screenHeight(7, context),
           child: FocusScope(
             onFocusChange: (focus) {
-              print(focus);
-              context.read<ShowsearchBloc>().add(ShowCancelIcon(text: "jj"));
+              context
+                  .read<ShowsearchBloc>()
+                  .add(const ShowCancelIcon(text: "jj"));
             },
             child: Form(
               autovalidateMode: AutovalidateMode.always,
               child: TextFormField(
                 controller: controller,
                 onChanged: (str) {
-                  print(str);
                   context.read<MenuHomeBloc>().add(SearchDataEvent(text: str));
                   // if (str.length.isEven && str.length > 1) search(str);
                   // context.read<ShowsearchBloc>().add(ShowCancelIcon(text: "jj"));

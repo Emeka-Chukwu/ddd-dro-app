@@ -23,10 +23,8 @@ class OrderwidgetBloc extends Bloc<OrderwidgetEvent, OrderwidgetState> {
       );
     } else if (event is AddSubtractBagOption) {
       yield OrderwidgetInitial();
-      print("jjjjjjjjjjjj");
       // ignore: unnecessary_statements
       event.add ? event.entity.quantity++ : event.entity.quantity--;
-      print(event.entity.quantity);
       yield OrderWidgetShowState(
         id: event.id,
         entity: event.entity,

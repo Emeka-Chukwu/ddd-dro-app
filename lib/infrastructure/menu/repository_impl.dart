@@ -34,11 +34,10 @@ class MenuRepositoryImpl extends MenuRespository {
     // final List<ProductEntity> searched = [];
 
     final data = productsData;
-    for (var element in data) {
-      var entity = Products.fromJson(element).toProductEntity();
+    for (final element in data) {
+      final entity = Products.fromJson(element).toProductEntity();
       if (entity.title.toLowerCase().contains(searchText.toLowerCase()) ||
           entity.soldBy.contains(searchText)) {
-        print(entity.title);
         products.add(entity);
       }
     }

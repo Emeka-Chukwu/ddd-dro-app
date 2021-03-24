@@ -5,10 +5,10 @@ import 'package:dro/infrastructure/bag/repository_impl.dart';
 import 'package:dro/infrastructure/menu/repository_impl.dart';
 import 'package:get_it/get_it.dart';
 
+import './domain/menu/repository.dart';
 import 'application/bag/baglist/baglist_bloc.dart';
 import 'application/menu/addsub/productaddsub_bloc.dart';
 import 'application/menu/showSearch/showsearch_bloc.dart';
-import './domain/menu/repository.dart';
 
 GetIt sl = GetIt.instance;
 Future<void> init() async {

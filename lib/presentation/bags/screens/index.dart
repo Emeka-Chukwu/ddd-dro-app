@@ -1,5 +1,4 @@
 import 'package:dro/application/bag/baglist/baglist_bloc.dart';
-import 'package:dro/application/bag/orderwidget_bloc.dart';
 import 'package:dro/presentation/bags/widget/order_card.dart';
 import 'package:dro/presentation/cores/cores.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,6 @@ class IndexHomePage extends StatelessWidget {
             // context.read<BaglistBloc>().add(GetBagListEvent());
 
             builder: (context, state) {
-              print("gggggggggggggggggggg");
-              print(state);
               // context.read<BaglistBloc>().add(GetBagListEvent());
 
               if (state is BaglistInitial) {
@@ -34,13 +31,12 @@ class IndexHomePage extends StatelessWidget {
                         child: CircularProgressIndicator(
                             backgroundColor: AppColor.white)));
               } else if (state is BaglistLoaded) {
-                print(state.bags);
-                print("state of the bages");
+                // ignore: avoid_unnecessary_containers
                 return Container(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        YMargin(30),
+                        const YMargin(30),
                         Container(
                           alignment: Alignment.center,
                           width: Responsive.screenWidth(15, context),
@@ -79,7 +75,7 @@ class IndexHomePage extends StatelessWidget {
                               ),
                               child: Text(
                                 state.bags.length.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -93,7 +89,7 @@ class IndexHomePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: AppColor.white,
                               borderRadius: BorderRadius.circular(10)),
-                          child: Text(
+                          child: const Text(
                               "Tap on an item for add, remove, delete options",
                               style: TextStyle(fontSize: 12)),
                         ),
@@ -116,11 +112,10 @@ class IndexHomePage extends StatelessWidget {
                         if (state.bags.isEmpty)
                           YMargin(Responsive.screenWidth(20, context)),
                         if (state.bags.isEmpty)
-                          Container(
-                              child: Text("No product in the bag",
-                                  style: TextStyle(
-                                    color: AppColor.white,
-                                  ))),
+                          Text("No product in the bag",
+                              style: TextStyle(
+                                color: AppColor.white,
+                              )),
                         if (state.bags.isEmpty)
                           YMargin(Responsive.screenWidth(20, context)),
                         Row(
@@ -149,7 +144,7 @@ class IndexHomePage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: AppColor.white,
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Text("Checkout",
+                            child: const Text("Checkout",
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
@@ -165,8 +160,6 @@ class IndexHomePage extends StatelessWidget {
             },
             listener: (context, state) {
               if (state is BaglistLoaded) {
-                print("jjjjjjjjjjddddddddd");
-                print(state.bags);
                 // print(state.bags[0].quantity);
                 // print(state.bags[1].quantity);
               }

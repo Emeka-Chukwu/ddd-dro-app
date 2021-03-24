@@ -12,7 +12,7 @@ class DisplaySearchEvent extends ShowsearchEvent {}
 class ShowCancelIcon extends ShowsearchEvent {
   final String text;
 
-  ShowCancelIcon({required this.text});
+  const ShowCancelIcon({required this.text});
 }
 
 class HideIconAndClearText extends ShowsearchEvent {}

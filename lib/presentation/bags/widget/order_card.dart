@@ -16,12 +16,9 @@ class OrderCard extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    int singleShow = 0;
-
     return BlocConsumer<OrderwidgetBloc, OrderwidgetState>(
       listener: (context, state) {
         if (state is OrderWidgetShowState) {
-          print("jhghhhhhhhhhhhhjjjjj");
           context
               .read<BaglistBloc>()
               .add(CalculateTotalEvent(entity: entities));
@@ -31,9 +28,6 @@ class OrderCard extends StatelessWidget {
         return GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            singleShow = entity.id;
-            print(singleShow);
-            print("singleShow");
             context
                 .read<OrderwidgetBloc>()
                 .add(ShowBagOptions(entity: entity, id: entity.id));

@@ -11,6 +11,7 @@ class ProductHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ignore: avoid_unnecessary_containers
       body: Container(
           child: Stack(
         children: [
@@ -23,10 +24,11 @@ class ProductHome extends StatelessWidget {
                       BlocBuilder<MenuHomeBloc, MenuHomeState>(
                           builder: (context, state) {
                         if (state is DataLoaded) {
+                          // ignore: avoid_unnecessary_containers
                           return Container(
                               child: Text("${state.products.length} Item(s)"));
                         }
-                        return Container(child: Text("0 Item(s)"));
+                        return const Text("0 Item(s)");
                       }),
                       HeaderButton(
                         filter: () {},
@@ -42,7 +44,7 @@ class ProductHome extends StatelessWidget {
                         child: BlocBuilder<MenuHomeBloc, MenuHomeState>(
                             builder: (context, state) {
                           if (state is MenuHomeInitial) {
-                            Future.delayed(Duration(seconds: 1), () {
+                            Future.delayed(const Duration(seconds: 1), () {
                               context
                                   .read<BaglistBloc>()
                                   .add(GetBagListEvent());
@@ -67,7 +69,6 @@ class ProductHome extends StatelessWidget {
                             );
                           }
                           if (state is MenuHomeInitial) {
-                            print("oooooo");
                             Future.delayed(const Duration(seconds: 1), () {
                               context
                                   .read<MenuHomeBloc>()
@@ -88,7 +89,7 @@ class ProductHome extends StatelessWidget {
           ),
           BlocBuilder<BaglistBloc, BaglistState>(
             builder: (context, state) {
-              if (state is BaglistLoaded)
+              if (state is BaglistLoaded) {
                 return Positioned(
                   bottom: 0,
                   child: Container(
@@ -141,7 +142,7 @@ class ProductHome extends StatelessWidget {
                               ),
                               child: Text(
                                 state.bags.length.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -152,6 +153,7 @@ class ProductHome extends StatelessWidget {
                     ),
                   ),
                 );
+              }
               return Container();
             },
           )
