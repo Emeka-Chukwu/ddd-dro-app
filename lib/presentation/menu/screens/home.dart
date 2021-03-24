@@ -1,5 +1,6 @@
 import 'package:dro/application/bag/baglist/baglist_bloc.dart';
 import 'package:dro/application/menu/home/menu_home_bloc.dart';
+import 'package:dro/presentation/bags/widget/bottom_sheet.dart';
 import 'package:dro/presentation/components/components.dart';
 import 'package:dro/presentation/cores/cores.dart';
 import 'package:dro/presentation/menu/screens/product_details.dart';
@@ -21,14 +22,27 @@ class ProductHome extends StatelessWidget {
                 children: [
                   Column(
                     children: [
+                      const YMargin(20),
                       BlocBuilder<MenuHomeBloc, MenuHomeState>(
                           builder: (context, state) {
                         if (state is DataLoaded) {
                           // ignore: avoid_unnecessary_containers
                           return Container(
-                              child: Text("${state.products.length} Item(s)"));
+                              child: Text(
+                            "${state.products.length} Item(s)",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ));
                         }
-                        return const Text("0 Item(s)");
+                        return const Text(
+                          "0 Item(s)",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
                       }),
                       HeaderButton(
                         filter: () {},
@@ -40,6 +54,7 @@ class ProductHome extends StatelessWidget {
                         sort: () {},
                       ),
                       const YMargin(15),
+                      // ignore: avoid_unnecessary_containers
                       Container(
                         child: BlocBuilder<MenuHomeBloc, MenuHomeState>(
                             builder: (context, state) {
@@ -132,18 +147,22 @@ class ProductHome extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              width: 35,
-                              height: 35,
-                              decoration: BoxDecoration(
-                                color: AppColor.white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Text(
-                                state.bags.length.toString(),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                            GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () => bagBottomSheet(context),
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: 35,
+                                height: 35,
+                                decoration: BoxDecoration(
+                                  color: AppColor.white,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Text(
+                                  state.bags.length.toString(),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             )

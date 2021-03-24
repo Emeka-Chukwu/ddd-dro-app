@@ -11,6 +11,7 @@ class DetailsAddSub extends StatelessWidget {
   const DetailsAddSub({Key? key, required this.details}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_unnecessary_containers
     return Container(
       child: BlocBuilder<ProductaddsubBloc, ProductaddsubState>(
           builder: (context, state) {
@@ -46,7 +47,7 @@ class DetailsAddSub extends StatelessWidget {
                   ),
                   if (state is AddSubtractLoaded)
                     Text(
-                      '${state.entity.quantity}',
+                      '${details.quantity}',
                       style: const TextStyle(fontSize: 18),
                     ),
                   if (state is! AddSubtractLoaded)

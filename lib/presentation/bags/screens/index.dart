@@ -7,10 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class IndexHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.purple,
-      body: Column(
+    return Container(
+      height: Responsive.screenHeight(96, context),
+      padding:
+          EdgeInsets.symmetric(horizontal: Responsive.screenWidth(3, context)),
+      child: Column(
         children: [
+          const YMargin(5),
           BlocConsumer<BaglistBloc, BaglistState>(
             // context.read<BaglistBloc>().add(GetBagListEvent());
 
@@ -36,14 +39,17 @@ class IndexHomePage extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        const YMargin(30),
-                        Container(
-                          alignment: Alignment.center,
-                          width: Responsive.screenWidth(15, context),
-                          height: Responsive.screenHeight(0.6, context),
-                          decoration: BoxDecoration(
-                              color: AppColor.white,
-                              borderRadius: BorderRadius.circular(10)),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: Responsive.screenWidth(15, context),
+                            height: Responsive.screenHeight(0.6, context),
+                            decoration: BoxDecoration(
+                                color: AppColor.white,
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
                         ),
                         Row(
                           children: [
@@ -82,18 +88,21 @@ class IndexHomePage extends StatelessWidget {
                             )
                           ],
                         ),
+                        const YMargin(10),
                         Container(
                           alignment: Alignment.center,
-                          width: Responsive.screenWidth(80, context),
+                          width: Responsive.screenWidth(70, context),
                           height: Responsive.screenHeight(4, context),
                           decoration: BoxDecoration(
                               color: AppColor.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: const Text(
                               "Tap on an item for add, remove, delete options",
-                              style: TextStyle(fontSize: 12)),
+                              style: TextStyle(fontSize: 10)),
                         ),
+                        const YMargin(10),
                         if (state.bags.isNotEmpty)
+                          // ignore: sized_box_for_whitespace
                           Container(
                             width: Responsive.screenWidth(100, context),
                             height: Responsive.screenHeight(68, context),
@@ -128,7 +137,7 @@ class IndexHomePage extends StatelessWidget {
                             ),
                             YMargin(Responsive.screenHeight(3, context)),
                             Text(
-                              "N${state.totalCost}",
+                              "N${state.totalCost.toInt()}",
                               style: TextStyle(
                                   color: AppColor.white, fontSize: 18),
                             )
@@ -140,7 +149,7 @@ class IndexHomePage extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.center,
                             width: Responsive.screenWidth(70, context),
-                            height: Responsive.screenHeight(8, context),
+                            height: Responsive.screenHeight(7, context),
                             decoration: BoxDecoration(
                                 color: AppColor.white,
                                 borderRadius: BorderRadius.circular(20)),

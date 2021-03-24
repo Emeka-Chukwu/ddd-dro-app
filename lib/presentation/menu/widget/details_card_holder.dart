@@ -21,11 +21,13 @@ class DetailsCardHolder extends StatelessWidget {
               icon: "cap",
               title: "PACK SIZE",
             ),
+            const YMargin(7),
             DetailsCard(
               details: details.constituents,
               icon: "cap",
               title: "CONSTITUENTTS",
             ),
+            const YMargin(7),
             DetailsCard(
               details: details.dispensed,
               icon: "cap",

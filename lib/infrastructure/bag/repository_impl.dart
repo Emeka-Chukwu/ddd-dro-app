@@ -1,9 +1,11 @@
 import 'package:dro/domain/bag/bag.dart';
 import 'package:dro/domain/bag/repository.dart';
 import 'package:dro/infrastructure/bag/data.dart';
+// import 'package:dro/infrastructure/bag/data.dart';
 
 class BagRespositoryImpl extends BagRepository {
   List<BagEntity> bags = bagEntity;
+  // = bagEntity;
   @override
   List<BagEntity> getBagList() {
     return bags;
@@ -17,7 +19,6 @@ class BagRespositoryImpl extends BagRepository {
 
   @override
   List<BagEntity> deleteProductFromBag(BagEntity entity) {
-    final int index = entity.id;
     var id = -1;
     if (bags.isNotEmpty) {
       id = bags.indexWhere((element) => entity.id == element.id);

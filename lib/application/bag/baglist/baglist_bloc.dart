@@ -43,7 +43,6 @@ class BaglistBloc extends Bloc<BaglistEvent, BaglistState> {
   Stream<BaglistState> getAllBag() async* {
     yield BaglistLoading();
     final bags = repository.getBagList();
-    print(bags);
     // yield BaglistLoaded(bags: bags);
     yield* getTotalCost(bags);
   }
